@@ -1,28 +1,29 @@
 import express from "express";
-import URL from "./models/url.model.js";
 import connectDB from "./db/database.js";
+import router from "./routes/url.routes.js";
 import dotenv from "dotenv";
-import router from "./routes/url.routes.js"
 
-//environmental variable setup
-dotenv.config()
-
-//app initialization
-const app = express();
-
-//middlewares
-app.use(express.json());
+//env variable setup
+dotenv.config();
 
 //database connection
-const DB_Url =process.env.MONGO_URL
-  
-connectDB(DB_Url);
+const DB_URL=process.env.MONGO_URL
+connectDB(DB_URL)
+
+//app initialiaztion
+const app=express();
+
+//middleware
+app.use(express.json())
 
 //routes
-app.use("/", router);
+app.use("/",router)
 
-const PORT = process.env.PORT
-//listening
-app.listen(PORT, () => {
-  console.log(`server is running at ${PORT} `);
-});
+//listeing
+const PORT=process.env.PORT
+
+app.listen(PORT,()=>{
+    console.log(`server is running at ${PORT}`)
+})
+
+
