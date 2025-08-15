@@ -14,43 +14,42 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 //database connection
-const DB_URL=process.env.MONGO_URL
+const DB_URL = process.env.MONGO_URL
 connectDB(DB_URL)
 
 
 
 //app initialiaztion
-const app=express();
+const app = express();
 
 //middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser());
 
 //ejs
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"))
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"))
 
 
-
-app.get("/test", async (req, res) => {
-    const allUrls = await URL.find({});
-    return res.render("home",{
-        urls:allUrls
-    })
-        
-});
+//
+// app.get("/test", async (req, res) => {
+//   const allUrls = await URL.find({});
+//   return res.render("home", {
+//     urls: allUrls
+//   })
+// });
 
 //routes
-app.use("/",router)
-app.use("/",staticRoute)
-app.use("/auth",authRouter)
+app.use("/url", router)
+app.use("/", staticRoute)
+app.use("/auth", authRouter)
 
 //listeing
-const PORT=process.env.PORT
+const PORT = process.env.PORT
 
-app.listen(PORT,()=>{
-    console.log(`server is running at ${PORT}`)
+app.listen(PORT, () => {
+  console.log(`server is running at ${PORT}`)
 })
 
 

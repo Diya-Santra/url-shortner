@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>register</h1>
+    <form action="/auth/register" method="POST">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" name="userName" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <% if (locals.error) { %>
+    <p style="color: red;"><%= error %></p>
+    <% } %>
+    <% if (locals.success) { %>
+    <meta http-equiv="refresh" content="3;url=/" />
+    <p style="color: green;"><%= success %></p>
+    <% } %>
+</body>
+</html>
