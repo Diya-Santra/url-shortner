@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import URL from "../models/url.model.js";
+import { getSession } from "../services/auth.services.js";
 
 const shortController = async (req, res) => {
     const { shortId } = req.params; 
@@ -17,7 +18,9 @@ const urlController = async (req, res) => {
         original: original,
         shorten: id
     });
-    res.json(url);
+    return res.render("home",{
+        shorten:id
+    })
 };
 
 export {

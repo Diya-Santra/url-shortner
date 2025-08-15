@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const urlSchema={
+const urlSchema=({
     shorten:{
         type:String,
         required:true
@@ -9,6 +9,6 @@ const urlSchema={
         type:String,
         required:true
     }
-}
+})
 const URL=new mongoose.model("URL",urlSchema)
 export default URL
